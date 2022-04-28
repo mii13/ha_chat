@@ -10,9 +10,7 @@ router = APIRouter(prefix='/chat')
 
 @router.post('/{chat_id}/', response_model=MessageOut)
 async def create_message(chat_id, message: Message):
-    r = await ChatService().create_message(chat_id, message)
-    print('-----------------', r)
-    return r
+    return await ChatService().create_message(chat_id, message)
 
 
 @router.get('/{chat_id}/', response_model=List[MessageOut])
